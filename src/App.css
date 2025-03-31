@@ -1,0 +1,12 @@
+/* APP */
+#root {
+  margin: 0 auto;
+}
+
+img.seam-form {
+  position: absolute;
+  bottom: -4em;
+  left: 0em;
+  width: 120%;
+  z-index: 2;
+}

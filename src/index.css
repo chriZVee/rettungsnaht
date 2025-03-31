@@ -1,0 +1,12 @@
+/** Global **/
+:root {
+  --text-color: #000000;
+  --default-font: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --background-color: #ddd;
+
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.5;
+  font-weight: 400;
+
+}

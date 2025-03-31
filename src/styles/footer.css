@@ -1,0 +1,20 @@
+/* FOOTER */
+
+section.footer {
+  display: flex;
+  background-color: var(--highlight);
+  flex-direction: row;
+}
+
+.footer-link-container {
+}
+
+.footer li {
+  display: inline-block;
+}
+
+.footer-link-container li.buttonized {
+  background-color: white;
+  color: var(--highlight);
+  padding: 0.2em;
+}
