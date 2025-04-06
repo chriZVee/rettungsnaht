@@ -5,8 +5,26 @@ import ContactData from "./ContactData.jsx";
 import DonationMethod from "./DonationMethod.jsx";
 import ClothingSelection from "./ClothingSelection.jsx";
 
-function Form() {
-  const [formData, setFormData] = useState({});
+export default function Form() {
+  const [donationMethod, setDonationMethod] = useState({
+    donationMethod: "",
+    isHandover: false,
+  });
+
+  const [contactData, setContactData] = useState({
+    name: "",
+    nameError: false,
+    email: "",
+    emailError: false,
+    address: "",
+    addressError: false,
+    location: "",
+    locationError: false,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <section className="form container">
@@ -14,14 +32,32 @@ function Form() {
         <h1>Spende deine Kleidung weltweit an aktuelle Krisengebiete</h1>
       </div>
       <form onSubmit="">
-        <DonationMethod />
+        <DonationMethod
+          donationMethod={donationMethod}
+          setDonationMethod={setDonationMethod}
+        />
         <div className="fieldset-container">
           <AreaSelection />
           <ClothingSelection />
         </div>
-        <ContactData />
+        <ContactData
+          contactData={contactData}
+          setContactData={setContactData}
+          isHandover={donationMethod.isHandover}
+        />
         <div className="submit-button-container">
-          <button type="submit" className="button submit-button">
+          <button
+            type="submit"
+            className={`button submit-button ${
+              contactData.nameError ||
+              contactData.emailError ||
+              contactData.addressError ||
+              contactData.locationError
+                ? "submit-error"
+                : ""
+            }`}
+            onSubmit={handleSubmit}
+          >
             Kleidung jetzt spenden
           </button>
         </div>
@@ -29,5 +65,3 @@ function Form() {
     </section>
   );
 }
-
-export default Form;

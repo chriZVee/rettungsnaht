@@ -1,7 +1,8 @@
 /* FORM */
 
 section.form.container {
-  padding-bottom: 2.5em;
+  padding-bottom: 4.5em;
+  position: relative;
 }
 
 .form form {
@@ -79,8 +80,9 @@ form label {
 .area-selection {
 }
 
-.form__input--red {
+.form .submit-error {
   color: red;
+  background: var(--lightGrey);
 }
 
 /* Buttonization */

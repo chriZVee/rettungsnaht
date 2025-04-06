@@ -1,5 +1,5 @@
-import "../styles/header.css";
-import rnLogo from "../assets/rn-logo-white.png";
+import '../styles/header.css'
+import rnLogo from '../assets/rn-logo-white.png'
 
 function Header() {
   return (
@@ -7,15 +7,9 @@ function Header() {
       <img src={rnLogo} className="header__image" alt="RettungsNaht Logo"></img>
       <nav className="nav">
         <ul className="nav-bar">
-          <li>
-            <a href="#">Krisengebiete</a>
-          </li>
-          <li>
-            <a href="#">Über uns</a>
-          </li>
-          <li className="buttonized">
-            <a href="#">Spende jetzt</a>
-          </li>
+          <li><a href="#">Krisengebiete</a></li>
+          <li><a href="#">Über uns</a></li>
+          <li className="buttonized"><a href="#">Spende jetzt</a></li>
           <li className="buttonized">&nbsp;</li>
         </ul>
       </nav>
@@ -23,4 +17,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header

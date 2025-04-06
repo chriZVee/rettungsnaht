@@ -1,17 +1,21 @@
-import "../styles/footer.css";
+import '../styles/footer.css'
 
 function Footer() {
   return (
     <section className="footer container">
-      <a href="" className="buttonized">
-        Spende jetzt
-      </a>
-      <a href="">Über Uns</a>
-      <a href="">Impressum</a>
-      <a href="">Datenschutzrichtlinie</a>
-      <p>© 2025 RettungsNaht e.V.</p>
+      <div className="footer-link-container">
+        <ul>
+          <li className="buttonized"><a href="">Spende jetzt</a></li>
+          <li><a href="">Über Uns</a></li>
+          <li><a href="">Impressum</a></li>
+          <li><a href="">Datenschutzrichtlinie</a></li>
+        </ul>
+      </div>
+      <div className="copyright-container">
+        <p className="copyright-note">© 2025 RettungsNaht e.V.</p>
+      </div>
     </section>
   );
 }
 
-export default Footer;
+export default Footer

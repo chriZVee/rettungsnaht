@@ -2,4 +2,13 @@
 
 .hero.container {
   max-width: none;
+  position: relative;
+}
+
+/* Seam-Hero */ 
+img.hero-seam {
+  position: absolute;
+  bottom: -4em;
+  left: 0em;
+  width: 100%;
 }

@@ -1,31 +1,36 @@
-import { useState } from "react";
-
-function pickUpMethod() {
-  const [pickUpMethod, setPickupMethod] = useState("");
-  const [isHandover, setIsHandover] = useState(false);
-
-  // const handleHandoverChange = (e) => {
-  //   setIsHandover();
-
-  //   if (isHandover = checked) {
-
-  //     const isChecked = e.target.checked;
-  //   }
-
-  // }
+export default function DonationMethod({
+  donationMethod,
+  setDonationMethod,
+  setIsHandover,
+}) {
+  const handleChange = (e) => {
+    const method = e.target.value;
+    setDonationMethod(method);
+    setIsHandover(method === "uebergabe");
+  };
 
   return (
-    <div className="pick-up-method">
+    <div className="donation-method">
       <label className="button buttonized">
-        <input type="radio" name="method" />
+        <input
+          type="radio"
+          name="method"
+          value="abholung"
+          onChange={handleChange}
+          checked={donationMethod === "abholung"}
+        />
         Abholung
       </label>
       <label className="button buttonized">
-        <input type="radio" name="method" value="" onChange="" checked="" />
+        <input
+          type="radio"
+          name="method"
+          value="uebergabe"
+          onChange={handleChange}
+          checked={donationMethod === "uebergabe"}
+        />
         Übergabe an der Geschäftsstelle
       </label>
     </div>
   );
 }
-
-export default pickUpMethod;

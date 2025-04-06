@@ -1,72 +1,109 @@
-import { useState } from "react";
-
-function ContactData() {
-  const [name, setName] = useState("");
-  const [nameError, setNameError] = useState(false);
-  const [nameErrorText, setNameErrorText] = useState("");
-
-  const [email, setEmail] = useState("");
-  const [eMailError, setEmailError] = useState(false);
-  const [emailErrorText, setEmailErrorText] = useState("");
-
-  const [address, setAddress] = useState("");
-  const [addressError, setAddressError] = useState(false);
-  const [addressErrorText, setAddressErrorText] = useState("");
-
-  const [location, setLocation] = useState("");
-  const [locationError, setLocationError] = useState(false);
-  const [locationErrorText, setLocationErrorText] = useState("");
+export default function ContactData({
+  contactData,
+  setContactData,
+  isHandover,
+}) {
+  /* Destructering */
+  const {
+    name,
+    email,
+    address,
+    location,
+    nameError,
+    nameErrorText,
+    emailError,
+    emailErrorText,
+    addressError,
+    addressErrorText,
+    locationError,
+    locationErrorText,
+  } = contactData;
 
   const handleNameChange = (e) => {
-    let name = e.target.value;
-    setName(name);
+    const newName = e.target.value;
+    let error = false;
+    let errorText = "";
 
     if (name.length < 3) {
-      setNameError(true);
-      return setNameErrorText("Bitte gib deinen Namen ein.");
+      error = true;
+      errorText = "Bitte gib deinen Namen ein.";
     } else if (name.trim().split(" ").length !== 2) {
-      setNameError(true);
-      return setNameErrorText("Bitte gib deinen Vor-und Nachnamen ein.");
+      error = true;
+      errorText = "Bitte gib deinen Vor-und Nachnamen ein.";
     } else {
-      setNameError(false);
-      return setNameErrorText("");
+      error = false;
+      errorText = "";
     }
+
+    setContactData({
+      ...contactData,
+      name: newName,
+      nameError: error,
+      nameErrorText: errorText,
+    });
   };
 
   const handleEmailChange = (e) => {
-    let eMail = e.target.value;
-    setEmail(eMail);
+    const newEmail = e.target.value;
+    let error = false;
+    let errorText = "";
 
-    if (eMail.trim() === "") {
-      setEmailError(true);
-      setEmailErrorText("Bitte gib deine E-Mailadresse ein.");
+    if (newEmail.trim() === "") {
+      error = true;
+      errorText = "Bitte gib deine E-Mailadresse ein.";
     } else {
-      setEmailError(false);
-      setEmailErrorText("");
+      error = false;
+      errorText = "";
     }
+
+    setContactData({
+      ...contactData,
+      email: newEmail,
+      emailError: emailError,
+      emailErrorText: emailErrorText,
+    });
   };
 
   const handleAddressChange = (e) => {
-    let address = e.target.value;
-    setAddress(address);
+    const newAddress = e.target.value;
+    let error = false;
+    let errorText = "";
 
-    if (address.trim() === "") {
-      setAddressError(true);
-      setAddressErrorText("Bitte gibt deine Adresse ein.");
+    if (newAddress.trim() === "") {
+      error = true;
+      errorText = "Bitte gibt deine Adresse ein.";
     } else {
-      setAddressError(false);
-      setAddressErrorText("");
+      error = false;
+      errorText = "";
     }
+
+    setContactData({
+      ...contactData,
+      address: newAddress,
+      addressError: addressError,
+      addressErrorText: addressErrorText,
+    });
   };
 
   const handleLocationChange = (e) => {
-    let location = e.target.value;
-    setLocation(location);
+    const newLocation = e.target.value;
+    let error = false;
+    let errorText = "";
 
-    if (location.trim() === "") {
-      setLocationError(true);
-      setLocationErrorText("Bitte gib deine PLZ und Ort ein.");
+    if (newLocation.trim() === "") {
+      error = true;
+      errorText = "Bitte gib deine PLZ und Ort ein.";
+    } else {
+      error = fals;
+      errorText = "";
     }
+
+    setContactData({
+      ...contactData,
+      location: newLocation,
+      locationError: locationError,
+      locationErrorText: locationErrorText,
+    });
   };
 
   return (
@@ -91,10 +128,10 @@ function ContactData() {
           value={email}
           onChange={handleEmailChange}
         />
-        {eMailError && <p>{emailErrorText}</p>}
+        {emailError && <p>{emailErrorText}</p>}
       </label>
 
-      <label>
+      <label className={isHandover ? "hidden" : ""}>
         Abholadresse
         <input
           type="text"
@@ -105,7 +142,7 @@ function ContactData() {
         {addressError && <p>{addressErrorText}</p>}
       </label>
 
-      <label className="mobile-hidden">
+      <label className={`mobile-hidden ${isHandover ? "hidden" : ""} `}>
         &nbsp;
         <input
           type="text"
@@ -118,5 +155,3 @@ function ContactData() {
     </div>
   );
 }
-console.log("ContactData geladen");
-export default ContactData;
