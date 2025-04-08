@@ -1,0 +1,48 @@
+/* SEAM */
+
+/* Hide seams until rework */
+.seam-wrapper {
+  display: none;
+}
+
+.seam-wrapper {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  transform: translateY(-25vh);
+  height: 1px;
+}
+
+.seam-wrapper svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.seam-svg path {
+  vector-effect: non-scaling-stroke;
+  stroke:var(--highlight);
+  stroke-dasharray: 50 50;
+  fill: none;
+}
+
+.seam-svg {
+  width: 100%;
+  height: clamp(40px, 6vw, 90px);
+  object-fit: contain;
+  display: block;
+}
+
+
+/* Hides the Seams for certain scales */
+@media (max-width: 1280px) {
+  .seam-wrapper, .seam-svg {
+    transform: scale(0);
+  }
+}
+
+@media (min-width: 2800px) {
+  .seam-wrapper, .seam-svg {
+    transform: scale(0);
+  }
+}
