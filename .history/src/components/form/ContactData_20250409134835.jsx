@@ -50,17 +50,37 @@ export default function ContactData({
     });
   };
 
+
+
+const isValidEmail = (email) => {
+  return /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/.test(email);
+}
+
   const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+
+    isValidEmail? setContactData({
+        ...contactData,
+        emailError: error,
+        emailErrorText: errorText,
+      }) : setContactData({
+        ...contactData,
+        email: newEmail,
+      });
+    }
+  };
+
+  const handleEmailBlur = (e) => {
     const newEmail = e.target.value;
     let error = false;
     let errorText = "";
-    const regexEmail = /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/;
+    
     const isEmpty = newEmail.trim() === "";
 
     if (isEmpty) {
       error = true;
       errorText = "Bitte gib deine E-Mailadresse ein.";
-    } else if (!regexEmail.test(newEmail)) {
+    } else if (!regex.test(newEmail)) {
       error = true;
       errorText = "Bitte eine komplette E-Mailadresse eingeben";
     } else {
@@ -70,21 +90,19 @@ export default function ContactData({
 
     setContactData({
       ...contactData,
-      email: newEmail,
       emailError: error,
       emailErrorText: errorText,
     });
   };
-
-  const handleEmailBlur = (e) => {};
 
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
     let error = false;
     let errorText = "";
     const regex = /^[A-ZÄÖÜa-zäöüß\s\-]{2,40} \d{1,4}[a-zA-Z]?$/;
+    const isEmpty = newAddress.trim() === "";
 
-    if (newAddress.trim() === "") {
+    if (isEmpty) {
       error = true;
       errorText = "Bitte gib deine Adresse ein.";
     } else if (!regex.test(newAddress)) {
@@ -102,6 +120,7 @@ export default function ContactData({
       addressErrorText: errorText,
     });
   };
+
   let officeZipFirstTwoDigits = org.zip.trim().slice(0, 2);
   const handleLocationChange = (e) => {
     const newLocation = e.target.value;
@@ -152,6 +171,7 @@ export default function ContactData({
           placeholder="name@url.de"
           value={email}
           onChange={handleEmailChange}
+          onBlur={handleEmailBlur}
         />
         {emailError && <p className="errorText">{emailErrorText}</p>}
       </label>

@@ -76,8 +76,6 @@ export default function ContactData({
     });
   };
 
-  const handleEmailBlur = (e) => {};
-
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
     let error = false;
@@ -117,7 +115,7 @@ export default function ContactData({
       errorText = "Bitte gib deine PLZ und Ort ein.";
     } else if (!isEmpty && !pickUpAvailable) {
       error = true;
-      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx). Bitte Übergabe an der Geschäftsstelle auswählen.`;
+      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx)`;
     } else {
       error = false;
       errorText = "";

@@ -55,10 +55,17 @@ export default function Form() {
   /* Handler */
   const handleSubmit = (e) => {
     let event = e.target.value;
-
+    const regexEmail = /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/;
     e.preventDefault();
 
+    let error = false;
+    let errorText = "";
+
     /* Email check */
+    if (!regexEmail.test(newEmail)) {
+      error = true;
+      errorText = "Bitte eine komplette E-Mailadresse eingeben";
+    }
   };
 
   /* Form validation check */

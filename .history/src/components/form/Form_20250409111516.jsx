@@ -55,10 +55,14 @@ export default function Form() {
   /* Handler */
   const handleSubmit = (e) => {
     let event = e.target.value;
-
     e.preventDefault();
 
-    /* Email check */
+    let error = false;
+    let errorText = "";
+
+    if (!regex.test(newEmail)) {
+      error = true;
+      errorText = "Bitte eine komplette E-Mailadresse eingeben";
   };
 
   /* Form validation check */

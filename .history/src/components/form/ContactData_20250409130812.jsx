@@ -51,6 +51,13 @@ export default function ContactData({
   };
 
   const handleEmailChange = (e) => {
+    setContactData({
+      ...contactData,
+      email: newEmail,
+    });
+  };
+
+  const handleEmailBlur = (e) => {
     const newEmail = e.target.value;
     let error = false;
     let errorText = "";
@@ -70,21 +77,19 @@ export default function ContactData({
 
     setContactData({
       ...contactData,
-      email: newEmail,
       emailError: error,
       emailErrorText: errorText,
     });
   };
-
-  const handleEmailBlur = (e) => {};
 
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
     let error = false;
     let errorText = "";
     const regex = /^[A-ZÄÖÜa-zäöüß\s\-]{2,40} \d{1,4}[a-zA-Z]?$/;
+    const isEmpty = newAddress.trim() === "";
 
-    if (newAddress.trim() === "") {
+    if (isEmpty) {
       error = true;
       errorText = "Bitte gib deine Adresse ein.";
     } else if (!regex.test(newAddress)) {
@@ -102,6 +107,7 @@ export default function ContactData({
       addressErrorText: errorText,
     });
   };
+
   let officeZipFirstTwoDigits = org.zip.trim().slice(0, 2);
   const handleLocationChange = (e) => {
     const newLocation = e.target.value;
@@ -152,6 +158,7 @@ export default function ContactData({
           placeholder="name@url.de"
           value={email}
           onChange={handleEmailChange}
+          onBlur={handleEmailBlur}
         />
         {emailError && <p className="errorText">{emailErrorText}</p>}
       </label>

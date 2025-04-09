@@ -55,6 +55,7 @@ export default function ContactData({
     let error = false;
     let errorText = "";
     const regexEmail = /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/;
+
     const isEmpty = newEmail.trim() === "";
 
     if (isEmpty) {
@@ -76,20 +77,14 @@ export default function ContactData({
     });
   };
 
-  const handleEmailBlur = (e) => {};
-
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
     let error = false;
     let errorText = "";
-    const regex = /^[A-ZÄÖÜa-zäöüß\s\-]{2,40} \d{1,4}[a-zA-Z]?$/;
 
     if (newAddress.trim() === "") {
       error = true;
-      errorText = "Bitte gib deine Adresse ein.";
-    } else if (!regex.test(newAddress)) {
-      error = true;
-      errorText = "Bitte eine komplette Adresse angeben.";
+      errorText = "Bitte gibt deine Adresse ein.";
     } else {
       error = false;
       errorText = "";
@@ -117,7 +112,7 @@ export default function ContactData({
       errorText = "Bitte gib deine PLZ und Ort ein.";
     } else if (!isEmpty && !pickUpAvailable) {
       error = true;
-      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx). Bitte Übergabe an der Geschäftsstelle auswählen.`;
+      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx)`;
     } else {
       error = false;
       errorText = "";

@@ -52,6 +52,14 @@ export default function ContactData({
 
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
+
+    setContactData({
+      ...contactData,
+      email: newEmail,
+    });
+  };
+
+  const handleEmailBlur = (e) => {
     let error = false;
     let errorText = "";
     const regexEmail = /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/;
@@ -70,13 +78,10 @@ export default function ContactData({
 
     setContactData({
       ...contactData,
-      email: newEmail,
       emailError: error,
       emailErrorText: errorText,
     });
   };
-
-  const handleEmailBlur = (e) => {};
 
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
@@ -152,6 +157,7 @@ export default function ContactData({
           placeholder="name@url.de"
           value={email}
           onChange={handleEmailChange}
+          onBlur={handleEmailBlur}
         />
         {emailError && <p className="errorText">{emailErrorText}</p>}
       </label>

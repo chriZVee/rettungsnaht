@@ -76,8 +76,6 @@ export default function ContactData({
     });
   };
 
-  const handleEmailBlur = (e) => {};
-
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
     let error = false;

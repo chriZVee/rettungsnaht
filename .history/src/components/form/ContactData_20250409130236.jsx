@@ -152,6 +152,7 @@ export default function ContactData({
           placeholder="name@url.de"
           value={email}
           onChange={handleEmailChange}
+          onBlur={handleEmailBlur}
         />
         {emailError && <p className="errorText">{emailErrorText}</p>}
       </label>

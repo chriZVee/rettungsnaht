@@ -26,17 +26,17 @@ export default function ContactData({
     const newName = e.target.value;
     let error = false;
     let errorText = "";
-    const regex = /^[A-Za-zÄÖÜäöüß\s\-']+$/;
+    const regex = /^[A-ZÄÖÜ][a-zäöüß] {1, 25}$/;
 
-    if (newName.length === 0) {
+    if (newName.length < 3) {
       error = true;
       errorText = "Bitte gib deinen Namen ein.";
-    } else if (newName.trim().split(" ").length < 2) {
+    } else if (
+      !(newName.trim().split(" ").length > 1) ||
+      !(newName.trim().split(" ").length < 4)
+    ) {
       error = true;
       errorText = "Bitte gib deinen Vor-und Nachnamen ein.";
-    } else if (!regex.test(newName)) {
-      error = true;
-      errorText = "Bitte nur Buchstaben verwenden.";
     } else {
       error = false;
       errorText = "";
@@ -54,15 +54,10 @@ export default function ContactData({
     const newEmail = e.target.value;
     let error = false;
     let errorText = "";
-    const regexEmail = /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/;
-    const isEmpty = newEmail.trim() === "";
 
-    if (isEmpty) {
+    if (newEmail.trim() === "") {
       error = true;
       errorText = "Bitte gib deine E-Mailadresse ein.";
-    } else if (!regexEmail.test(newEmail)) {
-      error = true;
-      errorText = "Bitte eine komplette E-Mailadresse eingeben";
     } else {
       error = false;
       errorText = "";
@@ -76,20 +71,14 @@ export default function ContactData({
     });
   };
 
-  const handleEmailBlur = (e) => {};
-
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
     let error = false;
     let errorText = "";
-    const regex = /^[A-ZÄÖÜa-zäöüß\s\-]{2,40} \d{1,4}[a-zA-Z]?$/;
 
     if (newAddress.trim() === "") {
       error = true;
-      errorText = "Bitte gib deine Adresse ein.";
-    } else if (!regex.test(newAddress)) {
-      error = true;
-      errorText = "Bitte eine komplette Adresse angeben.";
+      errorText = "Bitte gibt deine Adresse ein.";
     } else {
       error = false;
       errorText = "";
@@ -117,7 +106,7 @@ export default function ContactData({
       errorText = "Bitte gib deine PLZ und Ort ein.";
     } else if (!isEmpty && !pickUpAvailable) {
       error = true;
-      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx). Bitte Übergabe an der Geschäftsstelle auswählen.`;
+      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx)`;
     } else {
       error = false;
       errorText = "";
