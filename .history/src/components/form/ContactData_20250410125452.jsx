@@ -25,16 +25,16 @@ export default function ContactData({
   /* Handler */
 
   /* Auxiliary functions */
-  /* Checks if field is empty */
-  const isEmpty = (value) => value.trim().length === 0;
+  /* Check if field is empty */
+  const isEmpty = (value) => value.length === 0;
 
-  /* Checks field by word count */
+  /* Check field by word count */
   const wordCount = (value) => value.trim().split(" ").length;
 
-  /* Checks name by regex: 2-7 Words */
-  const isValidName = (name) => /^[\p{L}\p{M}\s.'-]{2,50}$/u.test(name);
+  /* Check if name is valid by regex */
+  const isValidName = (name) => /^[A-Za-zÄÖÜäöüß\s\-']+$/.test(name);
 
-  /* Name Validation */
+  /* Validate name - complete Validation */
   const validateName = (name) => {
     const newName = name.trim();
     let error = false;
@@ -50,9 +50,9 @@ export default function ContactData({
       errorText = "Bitte gib deinen Vor-und Nachnamen ein.";
     }
 
-    if (!isValidName(newName)) {
+    if (!error && !isValidName(newName)) {
       error = true;
-      errorText = "Bitte prüfe deinen Namen.";
+      errorText = "Bitte nur Buchstaben verwenden.";
     }
     return { error, errorText };
   };
@@ -89,54 +89,53 @@ export default function ContactData({
     });
   };
 
-  /* Checks if email is valid by regex */
+  /* Handler: email field */
+  /* Check if email is valid */
   const isValidEmail = (email) => {
-    return /^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,255}\.[a-zA-Z]{2,24}$/.test(
-      email
-    );
+    return /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/.test(email);
   };
 
-  /* Email Validation */
+  /* Check if email is empty */
+  const isEmptyEmail = (email) => {
+    email.trim() === "";
+  };
+
   const validateEmail = (mail) => {
     let error = false;
     let errorText = "";
-    let newEmail = mail.trim();
+    newEmail = mail.trim();
 
-    if (isEmpty(newEmail)) {
-      error = true;
-      errorText = "Bitte gib deine E-Mail-Adresse ein.";
+    if (isValidEmail(newEmail)) {
+      error = false;
+      errorText = "";
     }
 
-    if (!isValidEmail(newEmail)) {
+    if (isEmptyEmail(newEmail)) {
+      error = true;
+      errorText = "Bitte gib deine E-Mail-Adresse ein.";
+    } else if (!isValidEmail(newEmail)) {
       error = true;
       errorText = "Bitte prüfe deine E-Mail-Adresse.";
     }
-    return { error, errorText };
   };
 
-  /* Handler: email field */
   const handleEmailChange = (e) => {
-    const newEmail = e.target.value;
-    const { error } = validateEmail(newEmail);
+    const newEmail = e.target.value.trim();
 
-    if (!error || isValidEmail(newEmail)) {
-      setContactData({
-        ...contactData,
-        email: newEmail,
-        emailError: false,
-        emailErrorText: "",
-      });
-    } else {
-      setContactData({
-        ...contactData,
-        email: newEmail,
-      });
-    }
+    setContactData({
+      ...contactData,
+      email: newEmail,
+      emailError: false,
+      emailErrorText: errorText,
+    });
+
+    return { error, errorText };
   };
 
   const handleEmailBlur = (e) => {
     const newEmail = e.target.value.trim();
-    const { error, errorText } = validateEmail(newEmail);
+    let error = false;
+    let errorText = "";
 
     setContactData({
       ...contactData,
@@ -145,139 +144,61 @@ export default function ContactData({
     });
   };
 
-  /* Checks if address field is valid by regex */
-  const isValidAddress = (address) =>
-    /^[A-ZÄÖÜa-zäöüß \-.,]{2,40} \d{1,4}[A-Za-z]?([\/][A-Za-z])?$/.test(
-      address
-    );
-
-  /* Address Validation */
-  const validateAddress = (address) => {
-    const newAddress = address.trim();
-    let error = false;
-    let errorText = "";
-
-    if (isEmpty(newAddress)) {
-      error = true;
-      errorText = "Bitte gib deine Adresse ein.";
-    }
-
-    if (!isValidAddress(newAddress)) {
-      error = true;
-      errorText = "Bitte prüfe deine Adresse.";
-    }
-
-    return { error, errorText };
-  };
-
   /* Handler: Address field */
   const handleAddressChange = (e) => {
     const newAddress = e.target.value;
-    const { error } = validateAddress(newAddress);
-
-    if (!error || isValidAddress) {
-      setContactData({
-        ...contactData,
-        address: newAddress,
-        addressError: false,
-        addressErrorText: "",
-      });
-    }
-  };
-
-  const handleAddressBlur = (e) => {
-    const newAddress = e.target.value;
-    const { error, errorText } = validateAddress(newAddress);
-
-    if (error) {
-      setContactData({
-        ...contactData,
-        address: newAddress,
-        addressError: error,
-        addressErrorText: errorText,
-      });
-    } else {
-      setContactData({
-        ...contactData,
-        address: newAddress,
-      });
-    }
-  };
-
-  /* Check if the location is valid */
-  const isValidLocation = (address) => {
-    return /^\d{5}\s(?:[A-ZÄÖÜa-zäöüß\- ]{1,40}){1,5}$/.test(address);
-  };
-
-  /* Check if ZIP is available for pickup method */
-  let officeZipFirstTwoDigits = org.zip.trim().slice(0, 2);
-  const isPickupZip = (location) => {
-    let zipFirstTwoDigits = location.trim().slice(0, 2);
-    return zipFirstTwoDigits === officeZipFirstTwoDigits;
-  };
-
-  /* Validation for the location field */
-  const validateLocation = (location) => {
-    const newLocation = location.trim();
     let error = false;
     let errorText = "";
+    const regex = /^[A-ZÄÖÜa-zäöüß\s\-]{2,40} \d{1,4}[a-zA-Z]?$/;
+    const isEmpty = newAddress.trim() === "";
 
-    if (isEmpty(newLocation)) {
+    if (isEmpty) {
       error = true;
-      errorText = "Bitte gib deine PLZ und Ort ein.";
+      errorText = "Bitte gib deine Adresse ein.";
+    } else if (!regex.test(newAddress)) {
+      error = true;
+      errorText = "Bitte eine komplette Adresse angeben.";
+    } else {
+      error = false;
+      errorText = "";
     }
 
-    if (!isPickupZip(newLocation)) {
-      error = true;
-      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx). Bitte Übergabe an der Geschäftsstelle auswählen.`;
-    }
-
-    if (!isValidLocation(newLocation)) {
-      error = true;
-      errorText = "Bitte prüfe deine Eingabe.";
-    }
-
-    return { error, errorText };
+    setContactData({
+      ...contactData,
+      address: newAddress,
+      addressError: error,
+      addressErrorText: errorText,
+    });
   };
 
+  let officeZipFirstTwoDigits = org.zip.trim().slice(0, 2);
   const handleLocationChange = (e) => {
     const newLocation = e.target.value;
-    const { error } = validateLocation(newLocation);
+    let error = false;
+    let errorText = "";
+    let firstTwoDigits = newLocation.trim().slice(0, 2);
 
-    if (!error) {
-      setContactData({
-        ...contactData,
-        location: newLocation,
-        locationError: false,
-        locationErrorText: "",
-      });
+    let isEmpty = newLocation.trim() === "";
+    let pickUpAvailable = firstTwoDigits === officeZipFirstTwoDigits;
+
+    if (isEmpty) {
+      error = true;
+      errorText = "Bitte gib deine PLZ und Ort ein.";
+    } else if (!isEmpty && !pickUpAvailable) {
+      error = true;
+      errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx). Bitte Übergabe an der Geschäftsstelle auswählen.`;
     } else {
-      setContactData({
-        ...contactData,
-        location: newLocation,
-      });
+      error = false;
+      errorText = "";
     }
+
+    setContactData({
+      ...contactData,
+      location: newLocation,
+      locationError: error,
+      locationErrorText: errorText,
+    });
   };
-
-  const handleLocationBlur = (e) => {
-    const newLocation = e.target.value.trim();
-    const { error, errorText } = validateLocation(newLocation);
-
-    if (error) {
-      setContactData({
-        ...contactData,
-        location: newLocation,
-        locationError: error,
-        locationErrorText: errorText,
-      });
-    } else {
-      setContactData({
-        ...contactData,
-        location: newLocation,
-      });
-    }
-  };
-
   return (
     <div className="contact-data">
       <label>
@@ -312,7 +233,6 @@ export default function ContactData({
           placeholder="Straße, Hausnummer"
           value={address}
           onChange={handleAddressChange}
-          onBlur={handleAddressBlur}
         />
         {addressError && <p className="errorText">{addressErrorText}</p>}
       </label>
@@ -324,10 +244,9 @@ export default function ContactData({
           placeholder="PLZ, Ort"
           value={location}
           onChange={handleLocationChange}
-          onBlur={handleLocationBlur}
         />
         {locationError && <p className="errorText">{locationErrorText}</p>}
-        {(!isPickupZip(location) || isEmpty(location)) && (
+        {location === "" && (
           <p className="infoText">
             Abholung nur für Plz-Bereich {officeZipFirstTwoDigits}xxx verfügbar.
           </p>

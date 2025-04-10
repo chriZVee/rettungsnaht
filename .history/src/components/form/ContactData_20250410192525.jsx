@@ -25,16 +25,16 @@ export default function ContactData({
   /* Handler */
 
   /* Auxiliary functions */
-  /* Checks if field is empty */
-  const isEmpty = (value) => value.trim().length === 0;
+  /* Check if field is empty */
+  const isEmpty = (value) => value.length === 0;
 
-  /* Checks field by word count */
+  /* Check field by word count */
   const wordCount = (value) => value.trim().split(" ").length;
 
-  /* Checks name by regex: 2-7 Words */
-  const isValidName = (name) => /^[\p{L}\p{M}\s.'-]{2,50}$/u.test(name);
+  /* Check if name is valid by regex: 2-7 Words */
+  const isValidName = (name) => /^([A-ZÄÖÜ][a-zäöüß\-' ]+\s?){2,7}$/.test(name);
 
-  /* Name Validation */
+  /* Validate name - complete Validation */
   const validateName = (name) => {
     const newName = name.trim();
     let error = false;
@@ -89,11 +89,9 @@ export default function ContactData({
     });
   };
 
-  /* Checks if email is valid by regex */
+  /* Check if email is valid */
   const isValidEmail = (email) => {
-    return /^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,255}\.[a-zA-Z]{2,24}$/.test(
-      email
-    );
+    return /^[a-zA-Z._-]{1,32}@[a-zA-Z0-9._-]{1,32}\.[a-z]{2,10}$/.test(email);
   };
 
   /* Email Validation */
@@ -145,11 +143,9 @@ export default function ContactData({
     });
   };
 
-  /* Checks if address field is valid by regex */
+  /* Check if address field is valid by regex */
   const isValidAddress = (address) =>
-    /^[A-ZÄÖÜa-zäöüß \-.,]{2,40} \d{1,4}[A-Za-z]?([\/][A-Za-z])?$/.test(
-      address
-    );
+    /^[A-ZÄÖÜ][a-zäöüß \-.,]{2,40} \d{1,4}[a-zA-Z]?$/.test(address);
 
   /* Address Validation */
   const validateAddress = (address) => {
@@ -164,7 +160,7 @@ export default function ContactData({
 
     if (!isValidAddress(newAddress)) {
       error = true;
-      errorText = "Bitte prüfe deine Adresse.";
+      errorText = "Bitte eine komplette Adresse angeben.";
     }
 
     return { error, errorText };
@@ -204,21 +200,21 @@ export default function ContactData({
     }
   };
 
-  /* Check if the location is valid */
+  /* Check if ZIP is available for pickup method */
+
   const isValidLocation = (address) => {
-    return /^\d{5}\s(?:[A-ZÄÖÜa-zäöüß\- ]{1,40}){1,5}$/.test(address);
+    return /^\d{5}\s(?:[A-ZÄÖÜ][a-zäöüß\- ]{1,40}){1,5}$/.test(address);
   };
 
-  /* Check if ZIP is available for pickup method */
   let officeZipFirstTwoDigits = org.zip.trim().slice(0, 2);
   const isPickupZip = (location) => {
-    let zipFirstTwoDigits = location.trim().slice(0, 2);
-    return zipFirstTwoDigits === officeZipFirstTwoDigits;
+    let firstTwoDigits = location.trim().slice(0, 2);
+    return firstTwoDigits === officeZipFirstTwoDigits;
   };
 
-  /* Validation for the location field */
   const validateLocation = (location) => {
     const newLocation = location.trim();
+
     let error = false;
     let errorText = "";
 
@@ -227,14 +223,9 @@ export default function ContactData({
       errorText = "Bitte gib deine PLZ und Ort ein.";
     }
 
-    if (!isPickupZip(newLocation)) {
+    if (!isPickupZip) {
       error = true;
       errorText = `Abholung ist leider für deinen PLZ-Bereich nicht möglich (nur für ${officeZipFirstTwoDigits}xxx). Bitte Übergabe an der Geschäftsstelle auswählen.`;
-    }
-
-    if (!isValidLocation(newLocation)) {
-      error = true;
-      errorText = "Bitte prüfe deine Eingabe.";
     }
 
     return { error, errorText };
@@ -327,7 +318,7 @@ export default function ContactData({
           onBlur={handleLocationBlur}
         />
         {locationError && <p className="errorText">{locationErrorText}</p>}
-        {(!isPickupZip(location) || isEmpty(location)) && (
+        {location === "" && (
           <p className="infoText">
             Abholung nur für Plz-Bereich {officeZipFirstTwoDigits}xxx verfügbar.
           </p>

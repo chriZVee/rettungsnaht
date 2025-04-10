@@ -147,7 +147,7 @@ export default function ContactData({
 
   /* Checks if address field is valid by regex */
   const isValidAddress = (address) =>
-    /^[A-ZÄÖÜa-zäöüß \-.,]{2,40} \d{1,4}[A-Za-z]?([\/][A-Za-z])?$/.test(
+    /^[A-ZÄÖÜ][a-zäöüß \-.,]{2,40} \d{1,4}[a-zA-Z]?([\/][a-zA-Z])?$/.test(
       address
     );
 
@@ -206,7 +206,7 @@ export default function ContactData({
 
   /* Check if the location is valid */
   const isValidLocation = (address) => {
-    return /^\d{5}\s(?:[A-ZÄÖÜa-zäöüß\- ]{1,40}){1,5}$/.test(address);
+    return /^\d{5}\s(?:[A-ZÄÖÜ][a-zäöüß\- ]{1,40}){1,5}$/.test(address);
   };
 
   /* Check if ZIP is available for pickup method */

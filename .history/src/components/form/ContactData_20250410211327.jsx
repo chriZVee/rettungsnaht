@@ -206,7 +206,7 @@ export default function ContactData({
 
   /* Check if the location is valid */
   const isValidLocation = (address) => {
-    return /^\d{5}\s(?:[A-ZÄÖÜa-zäöüß\- ]{1,40}){1,5}$/.test(address);
+    return /^\d{5}\s(?:[A-ZÄÖÜ][a-zäöüß\- ]{1,40}){1,5}$/.test(address);
   };
 
   /* Check if ZIP is available for pickup method */
