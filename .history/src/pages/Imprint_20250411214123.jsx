@@ -1,0 +1,93 @@
+import Page from "../components/Page";
+import org from "../data/org";
+
+export default function Imprint() {
+  return (
+    <>
+      <Page title="Impressum">
+        <section className="impressum">
+          <div className="impressum-block">
+            <h2>Angaben gemäß § 5 TMG</h2>
+            <p>
+              RettungsNaht e.V. Musterstraße 12 12345 Musterstadt Deutschland
+            </p>
+          </div>
+
+          <div className="impressum__block">
+            <h2>Vertretungsberechtigter Vorstand</h2>
+            <p>Max Mustermann</p>
+          </div>
+
+          <div className="impressum__block">
+            <h2>Kontakt</h2>
+            <p>Telefon: +49 (0)123 456789</p>
+            <p>
+              E-Mail:{org.email}
+              <a href="mailto:kontakt@rettungsnaht.org">
+                kontakt@rettungsnaht.org
+              </a>
+            </p>
+            <p>
+              Website:{" "}
+              <a
+                href="https://www.rettungsnaht.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                www.rettungsnaht.org
+              </a>
+            </p>
+          </div>
+
+          <div className="impressum-block">
+            <h2>Registereintrag</h2>
+            <p>Eintragung im Vereinsregister</p>
+            <p>Registergericht: Amtsgericht Musterstadt</p>
+            <p>Registernummer: VR 1234</p>
+          </div>
+
+          <div className="impressum-block">
+            <h2>Umsatzsteuer-ID</h2>
+            <p>USt-IdNr.: DE123456789</p>
+          </div>
+
+          <div className="impressum-block">
+            <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+            <p>
+              Max Mustermann
+              <br />
+              Musterstraße 12
+              <br />
+              12345 Musterstadt
+            </p>
+          </div>
+
+          <div className="impressum__block">
+            <h2>Haftung für Inhalte und Links</h2>
+            <p>
+              Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine
+              Haftung für die Inhalte externer Links. Für den Inhalt der
+              verlinkten Seiten sind ausschließlich deren Betreiber
+              verantwortlich.
+            </p>
+          </div>
+
+          <div className="impressum__block">
+            <h2>Online-Streitbeilegung</h2>
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur
+              Online-Streitbeilegung (OS) bereit:{" "}
+              <a
+                href="https://ec.europa.eu/consumers/odr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://ec.europa.eu/consumers/odr
+              </a>
+            </p>
+          </div>
+        </section>
+      </Page>
+    </>
+  );
+}

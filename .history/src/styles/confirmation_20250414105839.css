@@ -1,0 +1,8 @@
+/* Confirmation Page */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.confirmation-summary {
+  padding: 2rem;
+}

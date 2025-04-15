@@ -1,0 +1,33 @@
+/* INFO-BOX */
+
+.donation-summary {
+  padding-top: 0.5em;
+}
+
+.donation-summary .donation-box {
+  display: flex;
+  background-color: var(--highlight);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 6em 0;
+  color: white;
+  font-weight: bold;
+}
+
+.donation-summary .donation-counter {
+  font-size: var(--font-xxl);
+}
+
+.donation-summary .donation-info {
+  font-size: var(--font-large);
+}
+
+@media (max-width: 480px) {
+  .donation-summary .donation-box {
+    padding: 2em 0;
+  }
+  .donation-summary .donation-counter {
+    font-size: var(--font-larger);
+  }
+}

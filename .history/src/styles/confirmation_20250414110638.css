@@ -1,0 +1,10 @@
+/* Confirmation Page */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.confirmation-summary {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
