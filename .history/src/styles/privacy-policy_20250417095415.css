@@ -1,0 +1,14 @@
+/* Privacy Policy */
+
+section.privacy-policy {
+  padding: 0 0 4.5rem 0;
+}
+
+.legal-block h2 {
+  font-size: var(--font-medium);
+  padding: 2rem 0 0.5rem 0;
+}
+
+.legal-block:first-of-type h2 {
+  padding-top: 0rem;
+}

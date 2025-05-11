@@ -1,0 +1,161 @@
+import Page from "../components/Page";
+import org from "../data/org";
+import "../styles/imprint.css";
+
+const images = [
+  {
+    creator: "Mohammed Ibrahim",
+    link: "https://unsplash.com/de/fotos/eine-gruppe-von-menschen-steht-neben-einem-trummerhaufen-703Sobdug5o",
+    title: "Hero-Image",
+    service: "Unsplash",
+  },
+  {
+    creator: "Onur Burak Akın",
+    link: "https://unsplash.com/de/fotos/ein-ausgestopftes-tier-das-auf-einem-trummerhaufen-liegt-nmvO0TkXZNg",
+    title: "Image-Gallery-Banner",
+    service: "Unsplash",
+  },
+  {
+    creator: "Mahmoud Sulaiman",
+    link: "https://unsplash.com/de/fotos/ein-zerstortes-gebaude-in-einer-stadt-QF_CGDotbGY",
+    title: "Image-Card Syrien",
+    service: "Unsplash",
+  },
+  {
+    creator: "NOAA",
+    link: "https://unsplash.com/de/fotos/graustufenfoto-des-zerstorten-schiffes-an-land-sg-jiP9jPmY",
+    title: "Image-Card Indonesien",
+    service: "Unsplash",
+  },
+  {
+    creator: "Iqro Rinaldi",
+    link: "https://unsplash.com/de/fotos/graustufenfoto-des-zerstorten-schiffes-an-land-sg-jiP9jPmY",
+    title: "Image-Card Nordirland",
+    service: "Unsplash",
+  },
+  {
+    creator: "benjamin lehman",
+    link: "https://www.pexels.com/de-de/foto/hande-hemd-festhalten-halten-6994856/",
+    title: "About-Image-Gallery",
+    service: "Unsplash",
+  },
+  {
+    creator: "Julia M Cameron",
+    link: "https://unsplash.com/de/fotos/graustufenfoto-des-zerstorten-schiffes-an-land-sg-jiP9jPmY",
+    title: "About-Image-Gallery",
+    service: "Unsplash",
+  },
+  {
+    creator: "Jan van der Wolf",
+    link: "https://www.pexels.com/de-de/foto/architektur-eingang-glastur-holzrahmen-10627615/",
+    title: "About-Image-Gallery",
+    service: "Unsplash",
+  },
+  {
+    creator: "Gyan Shahane",
+    link: "https://unsplash.com/de/fotos/gruppe-von-menschen-die-tagsuber-auf-braunem-erdboden-stehen-LXN-3NWe3ws",
+    title: "Donation-Banner",
+    service: "Unsplash",
+  },
+];
+
+export default function Imprint() {
+  return (
+    <>
+      <Page>
+        <section className="imprint container">
+          <h1>Impressum</h1>
+          <div className="imprint-block">
+            <h2>Angaben gemäß § 5 TMG</h2>
+            <p>{org.officialName}</p> <p>{org.address}</p>
+            <p>
+              {org.zip} {org.city}
+            </p>
+            Deutschland
+          </div>
+
+          <div className="imprint-block">
+            <h2>Vertretungsberechtigter Vorstand</h2>
+            <p>{org.chairman}</p>
+          </div>
+
+          <div className="imprint-block">
+            <h2>Kontakt</h2>
+            <p>Telefon: {org.tel}</p>
+            <p>
+              E-Mail: {org.email}
+              <a href={`mailto: ${org.email}`}></a>
+            </p>
+            <p>
+              <span>Website: </span>
+              <a href={org.url} target="_blank" rel="noopener noreferrer">
+                {org.url}
+              </a>
+            </p>
+          </div>
+
+          <div className="imprint-block">
+            <h2>Registereintrag</h2>
+            <p>Eintragung im Vereinsregister</p>
+            <p>Registergericht: Amtsgericht Musterstadt</p>
+            <p>Registernummer: VR 1234</p>
+          </div>
+
+          <div className="imprint-block">
+            <h2>Umsatzsteuer-ID</h2>
+            <p>USt-IdNr.: {org.ustId}</p>
+          </div>
+
+          <div className="imprint-block">
+            <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+            <p>{org.chairman}</p>
+            <p>{org.address}</p>
+            <p>
+              {org.zip} {org.city}
+            </p>
+          </div>
+
+          <div className="imprint-block">
+            <h2>Haftung für Inhalte und Links</h2>
+            <p>
+              Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine
+              Haftung für die Inhalte externer Links. Für den Inhalt der
+              verlinkten Seiten sind ausschließlich deren Betreiber
+              verantwortlich.
+            </p>
+          </div>
+
+          <div className="imprint-block">
+            <h2>Online-Streitbeilegung</h2>
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur
+              Online-Streitbeilegung (OS) bereit:{" "}
+              <a
+                href="https://ec.europa.eu/consumers/odr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://ec.europa.eu/consumers/odr
+              </a>
+            </p>
+          </div>
+
+          <div className="imprint-block imageSources">
+            <h2>Bildquellenreferenzen</h2>
+            {images.map((image, index) => (
+              <p>
+                <a href={image.link}>
+                  {image.title}: {image.creator} auf {image.service}
+                </a>
+              </p>
+            ))}
+            <p className="author-message">
+              Ein großer Dank für die Bereitstellung der Fotogragien an die
+              Fotografen.
+            </p>
+          </div>
+        </section>
+      </Page>
+    </>
+  );
+}

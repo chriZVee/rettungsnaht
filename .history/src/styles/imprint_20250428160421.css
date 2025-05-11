@@ -1,0 +1,25 @@
+/* Imprint */
+
+section.imprint {
+  padding-bottom: 4.5rem;
+}
+
+.imprint-block {
+  padding: 0 2rem 0rem 2rem;
+}
+
+.imprint-block h2 {
+  font-size: var(--font-medium);
+  padding: 2rem 0 0.5rem 0;
+}
+
+.imprint-block:first-of-type h2 {
+  padding-top: 0rem;
+}
+
+.imprint-block a {
+  color: black;
+}
+
+.author-message {
+}

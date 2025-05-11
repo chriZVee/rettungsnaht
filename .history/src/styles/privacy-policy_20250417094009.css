@@ -1,0 +1,10 @@
+/* Privacy Policy */
+
+section.privacy-policy {
+  padding: 0 0 4.5rem 0;
+}
+
+.legal-wrapper h2 {
+  font-size: var(--font-medium);
+  padding-bottom: 1rem;
+}

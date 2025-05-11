@@ -1,0 +1,9 @@
+/* Imprint */
+
+section.impressum {
+  padding: 0 0 4.5em 0;
+}
+
+.impressum-block a {
+  color: black;
+}

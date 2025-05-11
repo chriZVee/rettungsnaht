@@ -1,0 +1,71 @@
+export default function ClothingSelection({
+  clothingSelection,
+  setClothingSelection,
+}) {
+  const donationItems = [
+    { label: "T-Shirt", value: "t-shirt" },
+    { label: "Pullover", value: "pullover" },
+    { label: "Jacke", value: "jacke" },
+    { label: "Hose", value: "hose" },
+    { label: "Winterkleidung", value: "winterkleidung" },
+    { label: "Sonstiges", value: "sonstiges" },
+  ];
+
+  /* Destructuring */
+  const { clothingItems, clothingItemError, clothingItemErrorText } =
+    clothingSelection;
+
+  /* Handler */
+  const handleClothingItemChange = (e) => {
+    let newItem = e.target.value;
+    let newItems = [...clothingItems];
+    let error = false;
+    let errorText = "";
+    let isChecked = e.target.checked;
+    let itemsNotice = "";
+
+    const showNote = newItem === "";
+    const showError = newItems.length === 0;
+
+    newItems = isChecked
+      ? [...newItems, newItem]
+      : newItems.filter((item) => item !== newItem);
+
+    if (clothingItemError) {
+      error = true;
+      errorText = "Bitte wähle mind. eine Kleidungsart aus.";
+    } else if (showNote) {
+      itemsNotice = "Bitte wähle mind. eine Kleidungsart aus.";
+    } else {
+      error = false;
+      errorText = "";
+    }
+
+    setClothingSelection({
+      clothingItems: newItems,
+      clothingItemError: error,
+      clothingItemErrorText: errorText,
+    });
+  };
+
+  return (
+    <fieldset className="clothing-selection">
+      <legend>Was möchtest du spenden?</legend>
+      <div className="clothing-selection-container">
+        {donationItems.map((item) => (
+          <label className="buttonized" key={item.label}>
+            <input
+              type="checkbox"
+              value={item.value}
+              onChange={handleClothingItemChange}
+            />
+            {item.label}
+          </label>
+        ))}
+        {clothingItemError && (
+          <p className="errorText">{clothingItemErrorText}</p>
+        )}
+      </div>
+    </fieldset>
+  );
+}

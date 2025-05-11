@@ -1,0 +1,189 @@
+/* GLOBAL */
+
+:root {
+  /* Colors */
+  --highlight: #ffad6d;
+  --link-hover: #ffad6d;
+  --text: #000;
+  --button-unchecked: #f2f2f2;
+  --button-checked: #ffad6d;
+  --button-text: #fff;
+  --h2: #000;
+  --lightGrey: #f2f2f2;
+  --warning: #ff4000;
+
+  /* Font - not in use yet */
+  --font-small: 0.8rem;
+  --font-base: 1rem;
+  --font-medium: 1.3rem;
+  --font-ml: 1.5rem;
+  --font-large: 1.8rem;
+  --font-xl: 2.4rem;
+  --font-xxl: 4.8rem;
+  --font-h2: 2.1rem;
+  --font-h1: 2.6rem;
+  --font-button: 1rem;
+
+  line-height: 1.5;
+  width: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-size: 14px;
+  font-family: "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  background-color: white;
+  /* margin reset */
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  html {
+    width: fit-content;
+  }
+}
+
+.header,
+.footer,
+.content {
+  width: 100%;
+}
+
+h1,
+.page-title {
+  font-size: var(--font-h1);
+  text-align: center;
+  padding: 1.5em 0;
+  font-weight: bold;
+}
+
+@media (max-width: 1440px) {
+  h1,
+  .page-title {
+    padding: 2em 0;
+    font-size: var(--font-large);
+  }
+}
+
+@media (max-width: 768px) {
+  h1,
+  .page-title {
+    padding: 2em 0 1.5em;
+    font-size: var(--font-ml);
+  }
+}
+
+h2 {
+  font-size: var(--font-h2);
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: var(--font-ml);
+  }
+}
+
+/* Margin Reset */
+p,
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0.02rem;
+}
+ul {
+  padding: 0px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Centered Containers */
+/* Large Desktops */
+.container {
+  max-width: 1440px;
+
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+/* Laptop/Tablet */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 960px;
+    padding: 0 2rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding: 0 1rem;
+  }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 0 0.75rem;
+  }
+}
+
+/* Fieldset reset */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-inline-size: unset;
+}
+
+/* Hide elements */
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+.button {
+  display: flex;
+  padding: 0.5em 0.8em;
+  background-color: var(--button-checked);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease;
+  font-size: var(--font-button);
+  text-align: center;
+  border: none;
+  color: white;
+}
+
+.buttonized .deco {
+  cursor: default;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

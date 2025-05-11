@@ -1,0 +1,12 @@
+/* Page */
+
+.page .page-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 4.5rem 0 4.5rem 0;
+}
+
+.page .content {
+  flex: 1;
+}

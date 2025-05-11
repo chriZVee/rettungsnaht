@@ -1,68 +1,121 @@
 import Page from "../components/Page";
 import org from "../data/org";
+import "../styles/imprint.css";
+
+const images = [
+  {
+    creator: "Mohammed Ibrahim",
+    link: "https://unsplash.com/de/fotos/eine-gruppe-von-menschen-steht-neben-einem-trummerhaufen-703Sobdug5o",
+    title: "Hero-Image",
+    service: "Unsplash",
+  },
+  {
+    creator: "Onur Burak Akın",
+    link: "https://unsplash.com/de/fotos/ein-ausgestopftes-tier-das-auf-einem-trummerhaufen-liegt-nmvO0TkXZNg",
+    title: "Image-Gallery-Banner",
+    service: "Unsplash",
+  },
+  {
+    creator: "Mahmoud Sulaiman",
+    link: "https://unsplash.com/de/fotos/ein-zerstortes-gebaude-in-einer-stadt-QF_CGDotbGY",
+    title: "Image-Card Syrien",
+    service: "Unsplash",
+  },
+  {
+    creator: "NOAA",
+    link: "https://unsplash.com/de/fotos/graustufenfoto-des-zerstorten-schiffes-an-land-sg-jiP9jPmY",
+    title: "Image-Card Indonesien",
+    service: "Unsplash",
+  },
+  {
+    creator: "Iqro Rinaldi",
+    link: "https://unsplash.com/photos/flood-waters-trap-people-and-vehicles-2PnCMOAlRwE",
+    title: "Image-Card Nordirland",
+    service: "Unsplash",
+  },
+  {
+    creator: "benjamin lehman",
+    link: "https://www.pexels.com/de-de/foto/hande-hemd-festhalten-halten-6994856/",
+    title: "About-Image-Gallery-1",
+    service: "Unsplash",
+  },
+  {
+    creator: "Julia M Cameron",
+    link: "https://www.pexels.com/de-de/foto/hande-hemd-festhalten-halten-6994856/",
+    title: "About-Image-Gallery-2",
+    service: "Unsplash",
+  },
+  {
+    creator: "Jan van der Wolf",
+    link: "https://www.pexels.com/de-de/foto/architektur-eingang-glastur-holzrahmen-10627615/",
+    title: "About-Image-Gallery-3",
+    service: "Pexels",
+  },
+  {
+    creator: "Gyan Shahane",
+    link: "https://unsplash.com/de/fotos/gruppe-von-menschen-die-tagsuber-auf-braunem-erdboden-stehen-LXN-3NWe3ws",
+    title: "Donation-Banner",
+    service: "Unsplash",
+  },
+];
 
 export default function Imprint() {
   return (
     <>
-      <Page title="Impressum">
-        <section className="impressum">
-          <div className="impressum-block">
+      <Page>
+        <section className="imprint container">
+          <h1>Impressum</h1>
+          <div className="imprint-block">
             <h2>Angaben gemäß § 5 TMG</h2>
+            <p>{org.officialName}</p> <p>{org.address}</p>
             <p>
-              RettungsNaht e.V. Musterstraße 12 12345 Musterstadt Deutschland
+              {org.zip} {org.city}
             </p>
+            Deutschland
           </div>
 
-          <div className="impressum__block">
+          <div className="imprint-block">
             <h2>Vertretungsberechtigter Vorstand</h2>
-            <p>Max Mustermann</p>
+            <p>{org.chairman}</p>
           </div>
 
-          <div className="impressum__block">
+          <div className="imprint-block">
             <h2>Kontakt</h2>
             <p>Telefon: {org.tel}</p>
             <p>
-              E-Mail:{org.email}
-              <a href="mailto:kontakt@rettungsnaht.org">
-                kontakt@rettungsnaht.org
-              </a>
+              E-Mail: {org.email}
+              <a href={`mailto: ${org.email}`}></a>
             </p>
             <p>
-              Website:{" "}
-              <a
-                href="https://www.rettungsnaht.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                www.rettungsnaht.org
+              <span>Website: </span>
+              <a href={org.url} target="_blank" rel="noopener noreferrer">
+                {org.url}
               </a>
             </p>
           </div>
 
-          <div className="impressum-block">
+          <div className="imprint-block">
             <h2>Registereintrag</h2>
             <p>Eintragung im Vereinsregister</p>
             <p>Registergericht: Amtsgericht Musterstadt</p>
             <p>Registernummer: VR 1234</p>
           </div>
 
-          <div className="impressum-block">
+          <div className="imprint-block">
             <h2>Umsatzsteuer-ID</h2>
-            <p>USt-IdNr.: DE123456789</p>
+            <p>USt-IdNr.: {org.ustId}</p>
           </div>
 
-          <div className="impressum-block">
+          <div className="imprint-block">
             <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+            <p>{org.chairman}</p>
+            <p>{org.address}</p>
             <p>
-              Max Mustermann
-              <br />
-              Musterstraße 12
-              <br />
-              12345 Musterstadt
+              {org.zip} {org.city}
             </p>
           </div>
 
-          <div className="impressum__block">
+          <div className="imprint-block">
             <h2>Haftung für Inhalte und Links</h2>
             <p>
               Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine
@@ -72,7 +125,7 @@ export default function Imprint() {
             </p>
           </div>
 
-          <div className="impressum__block">
+          <div className="imprint-block">
             <h2>Online-Streitbeilegung</h2>
             <p>
               Die Europäische Kommission stellt eine Plattform zur
@@ -84,6 +137,20 @@ export default function Imprint() {
               >
                 https://ec.europa.eu/consumers/odr
               </a>
+            </p>
+          </div>
+
+          <div className="imprint-block imageSources">
+            <h2>Bildquellenreferenzen</h2>
+            {images.map((image, index) => (
+              <p key={index}>
+                <a href={image.link}>
+                  {image.title}: {image.creator} auf {image.service}
+                </a>
+              </p>
+            ))}
+            <p className="author-message">
+              Ein großer Dank für die Bereitstellung der Fotografien.
             </p>
           </div>
         </section>

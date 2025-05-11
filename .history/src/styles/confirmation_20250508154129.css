@@ -1,0 +1,36 @@
+/* Confirmation Page */
+
+.confirmation-summary {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 6rem;
+  font-size: var(--font-base);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px){
+  .confirmation-summary {
+    padding: 3rem;
+  }
+}
+
+.data-leftElement {
+  font-weight: bold;
+}
+
+.confirmation-summary .confirmation-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.confirmation-summary .back-button {
+  margin-top: 2.5em;
+}
+
+.confirmation-summary .confirmation-data a {
+  align-self: center;
+  justify-self: center;
+}

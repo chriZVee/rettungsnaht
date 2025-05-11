@@ -12,6 +12,7 @@ export default function DonationMethod({ donationMethod, setDonationMethod }) {
     let error = false;
     let errorText = "";
 
+    // This condition never should get true, but is kept for safety reasons
     if (method === "") {
       errorText = "Bitte wähle eine Methode aus.";
       error = true;

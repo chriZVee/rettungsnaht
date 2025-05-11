@@ -1,0 +1,20 @@
+/* Confirmation Page */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.confirmation-summary {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem;
+  display: flex;
+}
+
+.data-leftElement {
+  font-weight: bold;
+}
+
+.confirmation-summary .confirmation-data {
+  display: flex;
+  gap: 1rem;
+}
