@@ -14,7 +14,7 @@ Eine responsive React-Webanwendung zur strukturierten Erfassung von Kleiderspend
 
 ---
 
-## Screenshots der Live-Page (Viewports: 2560px. 1440px 1024px, 768px, 480px)
+## Screenshots der Live-Page (Viewports: 2560px, 1440px 1024px, 768px, 480px)
 
 <img src="https://github.com/user-attachments/assets/609dad82-8899-4605-be23-9f3673a7c58a" width="200">
 <img src="https://github.com/user-attachments/assets/c182b2b5-d76e-40c2-b5dd-6796d139b527" width="200">
