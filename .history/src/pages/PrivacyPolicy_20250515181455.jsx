@@ -85,10 +85,7 @@ export default function PrivacyPolicy() {
           </p>
         </div>
         <div className="policy-block">
-          <p className="sourceInfo">
-            Dieser Text wurde exemplarisch mithilfe von ChatGPT (OpenAI)
-            erstellt und projektspezifisch angepasst.
-          </p>
+          <p className="sourceInfo">Dieser Text wurde exemplarisch mithilfe von ChatGPT (OpenAI) erstellt und projektspezifisch angepasst.</p>
         </div>
       </section>
     </Page>

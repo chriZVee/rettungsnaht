@@ -150,12 +150,12 @@ export default function Imprint() {
               </p>
             ))}
             <p className="author-message">
-              Vielen Dank für die Bereitstellung der Fotografien.
+              Ein großer Dank für die Bereitstellung der Fotografien.
             </p>
           </div>
 
           <div className="imprint-block">
-            <p className="sourceInfo">
+            <p>
               Dieser Text wurde exemplarisch mithilfe von ChatGPT (OpenAI)
               erstellt und projektspezifisch angepasst.
             </p>

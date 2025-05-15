@@ -18,7 +18,5 @@ section.privacy-policy {
 }
 
 .sourceInfo {
-  padding: 3rem 0 0.5rem 0;
-  font-size: var(--font-small);
-  font-style: italic;
+  padding: 5rem 0 0.5rem 0;
 }

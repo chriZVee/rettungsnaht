@@ -150,7 +150,7 @@ export default function Imprint() {
               </p>
             ))}
             <p className="author-message">
-              Vielen Dank für die Bereitstellung der Fotografien.
+              Ein großer Dank für die Bereitstellung der Fotografien.
             </p>
           </div>
 

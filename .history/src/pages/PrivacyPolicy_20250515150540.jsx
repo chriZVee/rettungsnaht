@@ -15,6 +15,7 @@ export default function PrivacyPolicy() {
             und entsprechend der gesetzlichen Datenschutzvorschriften sowie
             dieser Datenschutzerklärung.
           </p>
+
           <p>
             Diese Website dient ausschließlich der Abwicklung von Kleiderspenden
             in Krisengebiete. Die Nutzung ist ohne Registrierung möglich. Es
@@ -26,6 +27,7 @@ export default function PrivacyPolicy() {
           <p>
             Verantwortlich für die Datenverarbeitung auf dieser Website ist:
           </p>
+
           <p>{org.officialName}</p>
           <p>{org.address}</p>
           <p>
@@ -45,6 +47,7 @@ export default function PrivacyPolicy() {
             Es erfolgt keine Speicherung auf einem Server und keine Weitergabe
             an Dritte.
           </p>
+
           <p>
             Die Formularangaben werden nicht dauerhaft gespeichert, sondern
             dienen lediglich der lokalen Bestätigung deiner Angaben auf der
@@ -53,6 +56,7 @@ export default function PrivacyPolicy() {
         </div>
         <div className="policy-block">
           <h2>4. Cookies und Tracking</h2>
+
           <p>
             Diese Website verwendet keine Cookies, keine Analyse-Tools (z. B.
             Google Analytics) und keine Drittanbieter-Skripte.
@@ -83,13 +87,11 @@ export default function PrivacyPolicy() {
             Wir behalten uns vor, diese Datenschutzerklärung zu aktualisieren,
             falls sich technische oder rechtliche Rahmenbedingungen ändern.
           </p>
+          
         </div>
         <div className="policy-block">
-          <p className="sourceInfo">
-            Dieser Text wurde exemplarisch mithilfe von ChatGPT (OpenAI)
-            erstellt und projektspezifisch angepasst.
-          </p>
-        </div>
+          <p>Dieser Text wurde exemplarisch mithilfe von ChatGPT (OpenAI) erstellt und projektspezifisch angepasst.</p>
+          </div>
       </section>
     </Page>
   );
